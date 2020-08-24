@@ -61,10 +61,4 @@ describe("Home Page", ()=>{
         })
 
     });
-
-    it("should render empty list when it does not matches any climate", ()=>{
-       const {getByTestId} = renderComponent();
-        localStorage.setItem("searchKey", "none");
-        // expect(getByTestId("search-update")).toBeInTheDocument();
-    })
 })
