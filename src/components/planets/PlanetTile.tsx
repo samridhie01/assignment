@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/planet2.svg";
 import { makeStyles, Typography, Box } from "@material-ui/core";
+import {ReactComponent as PlanetIcon} from "../../assets/planet.svg";
 
 const useStyles = makeStyles({
   flexContainer2: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   item: {
     display: "flex",
     flex: "0 0 0",
-    width: "50%",
+    width: "100%",
     alignContent: "center"
   },
   
@@ -28,11 +28,11 @@ const PlanetTile: React.FC<PlanetData> = ({ name, climate }) => {
   const classes = useStyles();
   return (
     <>
-      <img src={logo} style={{ height: 100, width: 100 }} alt="website logo" />
+       <PlanetIcon />
       <div className={classes.flexContainer2}>
         <h3>{name}</h3>
         <Box className={classes.item}>
-        <Typography variant="subtitle2" > {climate}</Typography>
+        <Typography variant="subtitle2" >{climate} climate</Typography>
         </Box>
         <br/>
         <Link to={{ pathname: "/details", search: `?search=${name}` }}>

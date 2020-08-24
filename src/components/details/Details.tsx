@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getSpecificPlanetData } from "./SpecificPlanetRetrievalService";
+import { getSpecificPlanetData } from "../api/PlanetRetrievalService";
 import { Box, Typography } from "@material-ui/core";
 
-interface PlanetData {
+export interface PlanetDescription {
   climate: string;
   created: Date;
   diameter: number;
@@ -20,39 +20,34 @@ interface PlanetData {
 }
 
 const Details = () => {
-  
-  const [planetDetails, setPlanetDetails] = useState<PlanetData>();
+  const [planetDetails, setPlanetDetails] = useState<PlanetDescription>();
   useEffect(() => {
     getSpecificPlanetData(window.location.search).then(res => {
-        
       setPlanetDetails(res.data.results[0]);
     });
   }, []);
-  
   return(
       <>
        {planetDetails &&
        (   <Box m={2} border={1} width={300}>
-            <Typography>Name: {planetDetails.name}</Typography>
-            <Typography>Climate: {planetDetails.climate}</Typography>
-            <Typography>Diameter: {planetDetails.diameter}</Typography>
-            <Typography>Appeared in Films: {planetDetails.films.length}</Typography>
-            <Typography>Gravity pull: {planetDetails.gravity}</Typography>
-            <Typography>Orbital Period: {planetDetails.orbital_period}</Typography>
-            <Typography>Population: {planetDetails.population}</Typography>
-            <Typography>Number of residents: {planetDetails.residents.length}</Typography>
-            <Typography>Rotation Period: {planetDetails.rotation_period}</Typography>
-            <Typography>Surface Water: {planetDetails.surface_water}</Typography>
-            <Typography>Terrain: {planetDetails.terrain}</Typography>
-
-            
+            <Typography data-testid={"name"}>Name: {planetDetails.name}</Typography>
+            <Typography data-testid={"climate"}>Climate: {planetDetails.climate}</Typography>
+            <Typography data-testid={"diameter"}>Diameter: {planetDetails.diameter}</Typography>
+            <Typography data-testid={"films"}>Appeared in Films: {planetDetails.films.length}</Typography>
+            <Typography data-testid={"gravity"}>Gravity pull: {planetDetails.gravity}</Typography>
+            <Typography data-testid={"orbPeriod"}>Orbital Period: {planetDetails.orbital_period}</Typography>
+            <Typography data-testid={"population"}>Population: {planetDetails.population}</Typography>
+            <Typography data-testid={"residents"}>Number of residents: {planetDetails.residents.length}</Typography>
+            <Typography data-testid={"rotation-period"}>Rotation Period: {planetDetails.rotation_period}</Typography>
+            <Typography  data-testid={"surface-water"}>Surface Water: {planetDetails.surface_water}</Typography>
+            <Typography  data-testid={"terrain"}>Terrain: {planetDetails.terrain}</Typography>
             </Box>
        )
-            
+
     }
-      </>   
-   
-  ) 
+      </>
+
+  )
 };
 
 export default Details;

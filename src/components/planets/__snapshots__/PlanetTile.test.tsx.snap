@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Box should render snapshot 1`] = `
+<DocumentFragment>
+  <svg>
+    planet.svg
+  </svg>
+  <div
+    class="makeStyles-flexContainer2-1"
+  >
+    <h3>
+      abc
+    </h3>
+    <div
+      class="MuiBox-root MuiBox-root-3 makeStyles-item-2"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2"
+      >
+        def climate
+      </h6>
+    </div>
+    <br />
+    <a
+      href="/details?search=abc"
+    >
+      View details
+    </a>
+  </div>
+</DocumentFragment>
+`;

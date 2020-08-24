@@ -1,67 +1,87 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, {useEffect, useState, ChangeEvent, useCallback} from "react";
 import { useStyles } from "./HomePageStyle";
 import Header from "../header/Header";
 import Planets from "../planets/Planets";
 import SearchBox from "../searchBox/SearchBox";
-import { getPlanetData, getPlanetDataPage } from "./PlanetRetrievalService";
+import { getPlanetData } from "../api/PlanetRetrievalService";
 import Pagination from "@material-ui/lab/Pagination";
-import { PlanetData } from "../module/types";
+import { PlanetData } from "../types/types";
 import { Box } from "@material-ui/core";
+import {getPageNum, getSearchKey, setPageNum} from "../utils/utils";
+import { isEmpty } from "lodash";
+import NoPlanetData from "../planets/NoPlanetData";
 
 interface PlanetOverview {
   handleAddToFavs: (element: any) => void;
 }
 
+
 const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
   const [planetData, setPlanetData] = useState<PlanetData[]>([]);
 
-  const handleNewPage = (page: number) => {
-    getPlanetDataPage(page).then(res => {
-      setPlanetData(res.data.results);
-    });
+  const handleNewPage = (page: string) => {
+    setPageNum(page);
+    if (getSearchKey()) {
+      updatePlanetSearchResult();
+    }
+    else{
+      fetchData();
+    }
   };
 
   const fetchData = () => {
     getPlanetData().then(res => {
       setPlanetData(res.data.results);
-      localStorage.setItem("planetData", res.data.results);
     });
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const updatePlanetSearchResult = useCallback(()=> {
 
-  const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {
-    handleNewPage(value);
-  };
-
-  const updatePlanetSearchResult = (key: string | null) => {
-    if (key == "") {
+    const key = getSearchKey();
+    if (key === "") {
       fetchData();
       return;
     }
-    const newData = planetData.filter(data => {
-      if (
-        key == null ||
-        data.climate.toLowerCase().includes(key.toLowerCase())
-      ) {
-        return data;
-      }
+
+    getPlanetData().then(res => {
+      const newData = res.data.results.filter((data1: PlanetData):PlanetData|void => {
+        if (
+            key == null ||
+            data1.climate.toLowerCase().includes(key.toLowerCase())
+        ) {
+          return data1;
+        }
+      });
+      setPlanetData(newData);
     });
-    setPlanetData(newData);
+  },planetData);
+
+  useEffect(() => {
+
+    if (getSearchKey()) {
+      updatePlanetSearchResult();
+      return;
+    }
+      fetchData();
+  }, [updatePlanetSearchResult]);
+
+  const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {
+    handleNewPage(value.toString());
   };
+
+
 
   const classes = useStyles();
 
   return (
     <>
-      <Header path="/favs" linkName={"Favorites"} />
+      <Header path="/favs" linkName={"Favorites"}/>
       <Box display="flex" flexDirection="row">
         <div className={classes.fixWidth}>
-        <SearchBox handleSearch={updatePlanetSearchResult} />
+          <SearchBox handleSearch={updatePlanetSearchResult}/>
         </div>
         <div className={classes.fixWidth}>
+          {isEmpty(planetData) && <NoPlanetData/>}
           {planetData &&
             planetData.map((element: PlanetData, index: number) => {
               return (
@@ -71,19 +91,19 @@ const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
                     handleAddToFavs(element);
                   }}
                 />
-              );
-            })}
+            );
+          })}
         </div>
-        </Box>
-        <Pagination
+      </Box>
+      <Pagination
           count={6}
           defaultPage={1}
           variant="outlined"
           shape="rounded"
           className={classes.indexing}
           onChange={handlePageChange}
-        />
-      
+          page={parseInt(getPageNum() || "1")}
+      />
     </>
   );
 };

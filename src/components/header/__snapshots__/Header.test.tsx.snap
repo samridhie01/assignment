@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorInherit MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <button
+        aria-label="menu"
+        class="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-1 MuiIconButton-colorInherit MuiIconButton-edgeStart"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <img
+            alt="website logo"
+            src="planet2.svg"
+            style="height: 100px; width: 100px;"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <h6
+        class="MuiTypography-root makeStyles-title-2 MuiTypography-h6"
+      >
+        Planets
+      </h6>
+      <a
+        color="inherit"
+        href="/favs"
+      >
+        Favorites
+      </a>
+    </div>
+  </header>
+</DocumentFragment>
+`;

@@ -1,15 +1,12 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import {Toolbar, makeStyles, createStyles, IconButton, Button,Theme} from "@material-ui/core";
-import {ReactComponent as PlanetIcon} from "../../assets/planet.svg";
+import {Toolbar, makeStyles, createStyles, IconButton,Theme} from "@material-ui/core";
+import logo from "../../assets/planet2.svg";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-    },
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -37,7 +34,7 @@ return(
 <AppBar color="inherit"  position="static">
     <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-        <PlanetIcon className={classes.logo}/>
+        <img src={logo} style={{ height: 100, width: 100 }} alt="website logo" />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
             Planets
