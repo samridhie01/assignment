@@ -3,7 +3,7 @@ import {getSearchKey} from "../utils/utils";
 
 const NoPlanetData = ()=>{
     return(
-        <h3>no planet with climate {getSearchKey()}</h3>
+        <h3 data-testid={"search-update"}>no planet with climate {getSearchKey()}</h3>
     )
 }
 

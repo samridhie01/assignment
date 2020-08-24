@@ -2,7 +2,9 @@
 
 exports[`Search Box should render snapshot 1`] = `
 <DocumentFragment>
-  <h3>
+  <h3
+    data-testid="search-update"
+  >
     no planet with climate 
   </h3>
 </DocumentFragment>

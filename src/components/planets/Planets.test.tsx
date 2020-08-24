@@ -21,12 +21,6 @@ describe("Search Box", () => {
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display fav icon against planet tile", ()=>{
-        const {getByTestId} = renderComponent;
-        const favBtn = getByTestId("favIcon")
-        expect(favBtn).toBeInTheDocument();
-    })
-
 
 
 

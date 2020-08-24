@@ -44,12 +44,12 @@ const Planets: React.FC<PlanetsProps> = ({ data, onSaveClick }) => {
   }, [data.name]);
 
   return (
-    <Box m={2} border={1} width={800} className={classes.flexContainer}>
+    <Box m={2} border={1} width={800} className={classes.flexContainer} data-testid={"planets-section"}>
       <PlanetTile name={data.name} climate={data.climate} />
       <Box m={4} border={1} width={200} height={150}>
         <div className={classes.endPos}>
           <p>If you like this planet, click heart Icon </p>
-          <IconButton data-testId={"favIcon"} className={classes.btnColor} onClick={handleSave}>
+          <IconButton data-testid={"favIcon"} className={classes.btnColor} onClick={handleSave}>
             <FavoriteBorderIcon />
           </IconButton>
         </div>

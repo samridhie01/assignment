@@ -5,6 +5,7 @@ exports[`Search Box should render snapshot 1`] = `
   <div>
     <div
       class="MuiBox-root MuiBox-root-3"
+      data-testid="search-section"
     >
       <div
         class="MuiFormControl-root MuiTextField-root makeStyles-customStyle-2"
@@ -15,6 +16,7 @@ exports[`Search Box should render snapshot 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="climate-filter"
             placeholder="Enter climate to filter planets"
             type="text"
             value=""
@@ -37,6 +39,7 @@ exports[`Search Box should render snapshot 1`] = `
       </div>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-alignCenter-1"
+        data-testid="searchBtn"
         tabindex="0"
         type="button"
       >

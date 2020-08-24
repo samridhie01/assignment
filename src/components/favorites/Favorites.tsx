@@ -37,7 +37,7 @@ const Favorites = () => {
 
     const classes = useStyles();
     return (
-        <div>
+        <div data-testid={"favorties-section"}>
             <Header path="/" linkName={"HomePage"}/>
             {isEmpty(favs) ? (
                 <h2>NO DATA TO SHOW</h2>

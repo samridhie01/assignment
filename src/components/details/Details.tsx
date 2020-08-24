@@ -27,7 +27,7 @@ const Details = () => {
     });
   }, []);
   return(
-      <>
+      <div data-testid={"details-section"}>
        {planetDetails &&
        (   <Box m={2} border={1} width={300}>
             <Typography data-testid={"name"}>Name: {planetDetails.name}</Typography>
@@ -45,7 +45,7 @@ const Details = () => {
        )
 
     }
-      </>
+      </div>
 
   )
 };

@@ -2,7 +2,7 @@ import axios from "axios";
 import {getPageNum} from "../utils/utils";
 
 export const planeturl = "http://swapi.dev/api/planets";
-export const getPlanetData = async () => {
+export let getPlanetData = async () => {
   let page = getPageNum();
   if(page==null){
     page ="1";

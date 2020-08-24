@@ -2,9 +2,12 @@
 
 exports[`Favorites Page renders screenshot 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    data-testid="favorties-section"
+  >
     <header
       class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorInherit MuiPaper-elevation4"
+      data-testid="header-section"
     >
       <div
         class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
@@ -41,9 +44,49 @@ exports[`Favorites Page renders screenshot 1`] = `
         </a>
       </div>
     </header>
-    <h2>
-      NO DATA TO SHOW
-    </h2>
+    <div
+      class="MuiBox-root MuiBox-root-5"
+    >
+      <svg>
+        planet.svg
+      </svg>
+      <div
+        class="makeStyles-flexContainer2-6"
+      >
+        <h3>
+          abc
+        </h3>
+        <div
+          class="MuiBox-root MuiBox-root-8 makeStyles-item-7"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2"
+          >
+            def climate
+          </h6>
+        </div>
+        <br />
+        <a
+          href="/details?search=abc"
+        >
+          View details
+        </a>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-alignContent-1 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Remove
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;

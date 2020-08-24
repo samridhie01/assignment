@@ -43,7 +43,7 @@ const SearchBox: React.FC<Search> = ({ handleSearch }) => {
   return (
     <>
       <div >
-      <Box m={4} border={1} width={400} height={150} display="flex" flexDirection={"column"} >
+      <Box m={4} border={1} width={400} height={150} display="flex" flexDirection={"column"} data-testid={"search-section"}>
         <TextField
           variant="outlined"
           onChange={handleSearchChange}

@@ -4,6 +4,7 @@ exports[`Header should render snapshot 1`] = `
 <DocumentFragment>
   <header
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorInherit MuiPaper-elevation4"
+    data-testid="header-section"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"

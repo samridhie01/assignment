@@ -1,9 +1,23 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {render, getByTestId} from '@testing-library/react';
 import App from '../app/App';
+import {BrowserRouter} from "react-router-dom";
 
-test('renders learn react link', () => {
-  // const { getByText } = render(<App />);
-  // const linkElement = getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
-});
+describe("App page", () => {
+
+    const renderComponent = () =>  render(
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        )
+
+
+
+    it('renders learn react link', () => {
+        const {getByTestId} = renderComponent();
+        expect(getByTestId("HomePage")).toBeInTheDocument();
+        expect(getByTestId("HomePage")).toBeInTheDocument();
+
+    });
+})
+

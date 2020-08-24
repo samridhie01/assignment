@@ -1,14 +1,14 @@
-import React, {useEffect, useState, ChangeEvent, useCallback} from "react";
-import { useStyles } from "./HomePageStyle";
+import React, {ChangeEvent, useCallback, useEffect, useState} from "react";
+import {useStyles} from "./HomePageStyle";
 import Header from "../header/Header";
 import Planets from "../planets/Planets";
 import SearchBox from "../searchBox/SearchBox";
-import { getPlanetData } from "../api/PlanetRetrievalService";
+import {getPlanetData} from "../api/PlanetRetrievalService";
 import Pagination from "@material-ui/lab/Pagination";
-import { PlanetData } from "../types/types";
-import { Box } from "@material-ui/core";
+import {PlanetData} from "../types/types";
+import {Box} from "@material-ui/core";
 import {getPageNum, getSearchKey, setPageNum} from "../utils/utils";
-import { isEmpty } from "lodash";
+import {isEmpty} from "lodash";
 import NoPlanetData from "../planets/NoPlanetData";
 
 interface PlanetOverview {
@@ -35,7 +35,7 @@ const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
     });
   };
 
-  const updatePlanetSearchResult = useCallback(()=> {
+  const updatePlanetSearchResult = ()=> {
 
     const key = getSearchKey();
     if (key === "") {
@@ -54,7 +54,7 @@ const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
       });
       setPlanetData(newData);
     });
-  },planetData);
+  };
 
   useEffect(() => {
 
@@ -63,18 +63,16 @@ const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
       return;
     }
       fetchData();
-  }, [updatePlanetSearchResult]);
+  }, []);
 
   const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {
     handleNewPage(value.toString());
   };
 
-
-
   const classes = useStyles();
 
   return (
-    <>
+    <div data-testid={"HomePage"}>
       <Header path="/favs" linkName={"Favorites"}/>
       <Box display="flex" flexDirection="row">
         <div className={classes.fixWidth}>
@@ -102,9 +100,10 @@ const HomePage: React.FC<PlanetOverview> = ({ handleAddToFavs }) => {
           shape="rounded"
           className={classes.indexing}
           onChange={handlePageChange}
+          data-testid={"page-bar-section"}
           page={parseInt(getPageNum() || "1")}
       />
-    </>
+    </div>
   );
 };
 export default HomePage;

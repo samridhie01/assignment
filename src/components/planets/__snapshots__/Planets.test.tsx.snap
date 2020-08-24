@@ -4,6 +4,7 @@ exports[`Search Box should render snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root MuiBox-root-5 makeStyles-flexContainer-1"
+    data-testid="planets-section"
   >
     <svg>
       planet.svg
